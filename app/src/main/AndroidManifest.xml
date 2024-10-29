@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.subwayroutefinder">
 
-    <!-- Permission for Internet access -->
+    <!-- 인터넷 사용 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- Optional: Permission for accessing the network state -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -16,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!-- Main activity declaration -->
+        <!-- 스플래시 액티비티를 첫 화면으로 설정 -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +24,15 @@
             </intent-filter>
         </activity>
 
-        <!-- Search results activity declaration -->
+        <!-- 메인 액티비티 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <!-- 검색 결과 화면 -->
         <activity
             android:name=".SearchResultActivity"
             android:exported="true" />
-
-        <!-- Add other activities here if needed -->
 
     </application>
 </manifest>

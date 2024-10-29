@@ -1,17 +1,15 @@
 package com.example.subwayroutefinder
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.util.PriorityQueue
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var startStationInput: EditText
     private lateinit var destinationStationInput: EditText
     private lateinit var searchButton: Button
+    private lateinit var nearbyFacilitiesButton: Button
 
     // 그래프 데이터: 역과 거리 정보
     private val stationsGraph: MutableMap<String, MutableList<Pair<String, Int>>> = mutableMapOf(
@@ -39,8 +38,9 @@ class MainActivity : AppCompatActivity() {
         startStationInput = findViewById(R.id.startStationInput)
         destinationStationInput = findViewById(R.id.destinationStationInput)
         searchButton = findViewById(R.id.searchButton)
+        nearbyFacilitiesButton = findViewById(R.id.nearbyFacilitiesButton) // 추가된 부분
 
-        // 버튼 클릭 시 동작 정의
+        // 검색 버튼 클릭 시 동작 정의
         searchButton.setOnClickListener {
             val startStation = startStationInput.text.toString()
             val destinationStation = destinationStationInput.text.toString()
@@ -58,6 +58,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        // 주변 시설 버튼 클릭 시 동작 정의
+        nearbyFacilitiesButton.setOnClickListener {
+            val intent = Intent(this, NearbyFacilitiesActivity::class.java) // NearbyFacilitiesActivity로 수정
+            startActivity(intent)
         }
     }
 

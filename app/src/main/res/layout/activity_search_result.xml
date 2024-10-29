@@ -1,18 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="wrap_content"
+    <!-- 상단에 세 개의 버튼 -->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="경로 검색 결과가 여기에 표시됩니다."
-        android:textSize="20sp"
-        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 최소 시간 버튼 -->
+        <Button
+            android:id="@+id/minTimeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="최소 시간" />
+
+        <!-- 최소 환승 버튼 -->
+        <Button
+            android:id="@+id/minTransferButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="최소 환승" />
+
+        <!-- 최소 비용 버튼 -->
+        <Button
+            android:id="@+id/minCostButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="최소 비용" />
+    </LinearLayout>
+
+    <!-- 중간에 경로 검색 결과 출력 -->
+    <TextView
+        android:id="@+id/searchResultText"
+        android:layout_width="0dp"
+        android:layout_height="432dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="경로 검색 결과가 여기에 표시됩니다."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/startStationInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
+        app:layout_constraintVertical_bias="0.183" />
+
+    <!-- 출발역 입력 필드 -->
+    <EditText
+        android:id="@+id/startStationInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="출발역 입력"
+        android:inputType="text"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchResultText" />
+
+    <!-- 도착역 입력 필드 -->
+    <EditText
+        android:id="@+id/destinationStationInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="도착역 입력"
+        android:inputType="text"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startStationInput" />
+
+    <!-- 경로 검색 버튼 -->
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="경로 검색"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/destinationStationInput" />
+
+    <!-- 주변 시설 버튼 -->
+    <Button
+        android:id="@+id/nearbyFacilitiesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="주변 시설"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintMargin="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
